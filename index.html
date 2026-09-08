@@ -1,97 +1,253 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
-<title>MRJXYZ</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:linear-gradient(135deg,#111827,#1e293b,#0f172a);
-  color:#fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px;
-}
-.container{
-  width:100%;
-  max-width:600px;
-  text-align:center;
-}
-.avatar{
-  width:90px;
-  height:90px;
-  margin:auto;
-  border-radius:50%;
-  background:linear-gradient(135deg,#6366f1,#06b6d4);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  font-weight:800;
-  box-shadow:0 10px 40px rgba(0,0,0,.35);
-}
-h1{margin:18px 0 6px;font-size:30px}
-.desc{color:#94a3b8;margin-bottom:28px}
-.links{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.links a{
-  display:block;
-  padding:16px 20px;
-  border-radius:14px;
-  text-decoration:none;
-  color:#fff;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  backdrop-filter:blur(10px);
-  transition:.25s;
-}
-.links a:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,.15);
-}
-.footer{
-  margin-top:28px;
-  color:#64748b;
-  font-size:13px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>mrjxyz · 简洁个人主页</title>
+  <style>
+    /* 全局重置 & 柔和基础 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: linear-gradient(145deg, #f1f5f9 0%, #e9edf2 100%);
+    }
+
+    /* 主卡片 – 白色磨砂玻璃质感 */
+    .card {
+      max-width: 460px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border-radius: 40px;
+      padding: 2.2rem 1.8rem 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12),
+                  0 6px 18px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 装饰细线 */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 20%;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #94a3b8, transparent);
+      opacity: 0.2;
+      border-radius: 10px;
+    }
+
+    /* 头像 – 柔和圆形 */
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: #475569;
+      box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.08);
+      background: #e2e8f0;
+      background-image: radial-gradient(circle at 30% 30%, #f1f5f9, #cbd5e1);
+      user-select: none;
+    }
+
+    /* 姓名 – 使用用户名 mrjxyz */
+    .name {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    /* 头衔/标签 */
+    .title {
+      font-size: 1rem;
+      font-weight: 450;
+      color: #475569;
+      background: rgba(203, 213, 225, 0.4);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* 简介 */
+    .bio {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #334155;
+      margin: 1.2rem 0 2rem;
+      padding: 0 0.2rem;
+      font-weight: 400;
+    }
+
+    /* 社交链接 – 适应手指点击 */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 1rem;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.4rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 60px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e293b;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: all 0.2s;
+      flex: 0 1 auto;
+      min-width: 80px;
+      letter-spacing: 0.3px;
+    }
+
+    .links a:hover {
+      background: #ffffff;
+      border-color: #b0c4db;
+      box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.08);
+      transform: scale(1.02);
+    }
+
+    .links a:active {
+      transform: scale(0.96);
+      background: #eef2f6;
+    }
+
+    .links a i {
+      margin-right: 6px;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .icon-emoji {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-right: 6px;
+    }
+
+    /* 页脚 */
+    .footer {
+      margin-top: 2.2rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      letter-spacing: 0.3px;
+      border-top: 1px solid rgba(203, 213, 225, 0.3);
+      padding-top: 1.5rem;
+      opacity: 0.7;
+    }
+
+    .footer span {
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    /* 小屏微调 */
+    @media (max-width: 420px) {
+      .card {
+        padding: 1.8rem 1.2rem 2rem;
+        border-radius: 32px;
+      }
+      .avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 3rem;
+      }
+      .name {
+        font-size: 1.9rem;
+      }
+      .links a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        min-width: 70px;
+      }
+    }
+
+    /* 安全区域适配 */
+    @supports (padding: max(0px)) {
+      .card {
+        padding-left: max(1.8rem, env(safe-area-inset-left));
+        padding-right: max(1.8rem, env(safe-area-inset-right));
+      }
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="card">
+    <!-- 头像: 使用用户名首字母 'M' 作为视觉标识，同时保留 emoji 风格 -->
+    <div class="avatar" aria-label="mrjxyz 头像">
+      <span>🧑‍💻</span>
+      <!-- 如果想用首字母，可改为 <span>M</span>，这里保留 emoji 更活泼 -->
+    </div>
 
-  <div class="avatar">M</div>
+    <!-- 姓名：mrjxyz -->
+    <div class="name">mrjxyz</div>
 
-  <h1>MRJXYZ</h1>
-  <div class="desc">Welcome to my GitHub Pages</div>
+    <!-- 头衔，可自定义 -->
+    <div class="title">✨ 独立开发者 · 创造者</div>
 
-  <div class="links">
-    <a href="https://github.com/mrjxyz" target="_blank">
-      💻 GitHub
-    </a>
+    <!-- 个人简介 — 您可以根据需要修改 -->
+    <div class="bio">
+      热爱技术、设计 & 简洁生活。<br>
+      正在构建有趣的东西 · 现居地球
+    </div>
 
-    <a href="https://github.com/mrjxyz?tab=repositories" target="_blank">
-      📦 我的项目
-    </a>
+    <!-- 社交链接区域 — 链接可替换为真实地址 -->
+    <div class="links">
+      <a href="#" target="_blank" rel="noopener">
+        <span class="icon-emoji">📱</span> 微博
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <span class="icon-emoji">🐦</span> 推特
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <span class="icon-emoji">💻</span> GitHub
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <span class="icon-emoji">📷</span> 小红书
+      </a>
+    </div>
 
-    <a href="https://github.com/mrjxyz/mrjxyz.github.io" target="_blank">
-      🌐 网站源码
-    </a>
+    <!-- 脚注：包含用户名和邮箱占位，可改 -->
+    <div class="footer">
+      <span>✉️</span> mrjxyz@example.com <span>·</span> <span>© 2026</span>
+    </div>
   </div>
-
-  <div class="footer">
-    © 2026 MRJXYZ · Powered by GitHub Pages
-  </div>
-
-</div>
 </body>
 </html>
