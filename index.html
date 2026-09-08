@@ -108,7 +108,7 @@
       font-weight: 400;
     }
 
-    /* 社交链接 – 适应手指点击 */
+    /* 社交链接 – 只保留 GitHub，居中显示 */
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -121,7 +121,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1.4rem;
+      padding: 0.6rem 1.8rem;
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
@@ -134,7 +134,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
       transition: all 0.2s;
       flex: 0 1 auto;
-      min-width: 80px;
+      min-width: 100px;
       letter-spacing: 0.3px;
     }
 
@@ -193,9 +193,9 @@
         font-size: 1.9rem;
       }
       .links a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1.2rem;
         font-size: 0.9rem;
-        min-width: 70px;
+        min-width: 80px;
       }
     }
 
@@ -210,10 +210,9 @@
 </head>
 <body>
   <div class="card">
-    <!-- 头像: 使用用户名首字母 'M' 作为视觉标识，同时保留 emoji 风格 -->
+    <!-- 头像: 使用 emoji 风格 -->
     <div class="avatar" aria-label="mrjxyz 头像">
       <span>🧑‍💻</span>
-      <!-- 如果想用首字母，可改为 <span>M</span>，这里保留 emoji 更活泼 -->
     </div>
 
     <!-- 姓名：mrjxyz -->
@@ -228,23 +227,14 @@
       正在构建有趣的东西 · 现居地球
     </div>
 
-    <!-- 社交链接区域 — 链接可替换为真实地址 -->
+    <!-- 社交链接 — 仅保留 GitHub，链接指向 mrjxyz 的主页 -->
     <div class="links">
-      <a href="#" target="_blank" rel="noopener">
-        <span class="icon-emoji">📱</span> 微博
-      </a>
-      <a href="#" target="_blank" rel="noopener">
-        <span class="icon-emoji">🐦</span> 推特
-      </a>
-      <a href="#" target="_blank" rel="noopener">
+      <a href="https://github.com/mrjxyz" target="_blank" rel="noopener">
         <span class="icon-emoji">💻</span> GitHub
-      </a>
-      <a href="#" target="_blank" rel="noopener">
-        <span class="icon-emoji">📷</span> 小红书
       </a>
     </div>
 
-    <!-- 脚注：包含用户名和邮箱占位，可改 -->
+    <!-- 脚注：包含用户名和邮箱占位 -->
     <div class="footer">
       <span>✉️</span> mrjxyz@example.com <span>·</span> <span>© 2026</span>
     </div>
